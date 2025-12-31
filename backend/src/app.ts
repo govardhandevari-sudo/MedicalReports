@@ -1,10 +1,12 @@
-
+import dotenv from "dotenv";
+dotenv.config();
 import express from "express";
 import cors from "cors";
 import dashboardRoutes from "./routes/dashboard.routes";
 import reportRoutes from "./routes/reports.routes";
 
 const app = express();
+const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
@@ -15,4 +17,4 @@ app.use((req, _res, next) => {
   next();
 });
 
-app.listen(5000, () => console.log("Backend running on port 5000"));
+app.listen(PORT, () => console.log("Backend running on port "+PORT));
